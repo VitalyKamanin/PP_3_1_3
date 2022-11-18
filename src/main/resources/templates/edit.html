@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Modify User</title>
+</head>
+<body>
+<h2>Modify User</h2>
+
+    <form th:method="PUT" th:action="@{/admin/edit/{id} (id=${user.getId()})}" th:object="${user}">
+        <label for="id">ID</label>
+        <input readonly type="number" th:field="*{id}" id="id" placeholder="ID">
+        <br/>
+        <br>
+        <br>
+        <label for="username">Enter username: </label>
+        <input type="text" th:field="*{username}" id="username"/>
+        <br/>
+        <br>
+        <br>
+        <label for="lastname">Enter lastname: </label>
+        <input type="text" th:field="*{lastName}" id="lastname"/>
+        <br/>
+        <br>
+        <br>
+        <label for="email">Enter email: </label>
+        <input type="text" th:field="*{email}" id="email"/>
+        <br/>
+        <br>
+        <br>
+        <label for="password">Enter password: </label>
+        <input type="text" th:field="*{password}" id="password"/>
+        <br/>
+        <br>
+        <br>
+        <label for=roles>Role</label>
+        <select multiple class="form-control" name="roles" id="roles" size="2" th:field="*{roles}">
+            <option th:each="role : ${listRoles}" th:value="${role}" th:text="${role}"/>
+        </select>
+
+        <br>
+        <br/><br/>
+        <input type="submit" value="Modify"/>
+    </form>
+
+    <form action="#" th:action="@{/admin}" method="get">
+        <input type="submit" value="Back"/>
+    </form>
+    <br>
+    <form action="#" th:action="@{/logout}" method="get">
+        <input type="submit" value="Logout"/>
+    </form>
+</body>
+</html>
